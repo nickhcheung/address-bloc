@@ -141,4 +141,18 @@ RSpec.describe AddressBook do
     end
   end
 
+  describe "#nuke" do
+    it "checks if there are entries in the AddressBook" do
+      book.import_from_csv("entries.csv")
+
+      expect(book.entries.size).to eq(5)
+    end
+
+    it "checks that entries have all been nuked" do
+      book.nuke
+
+      expect(book.entries.size).to eq(0)
+    end
+  end
+
 end
